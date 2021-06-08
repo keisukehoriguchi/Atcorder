@@ -74,46 +74,46 @@ extension Array where Element: Equatable {
 
 
 
-let input = readLine()!.split(separator: " ")
-
-let allN = Int(input[0])!
-let pondK = Int(input[1])!
-
-var inputT:[[Int]] = []
-
-for _ in 1...allN {
-    let inputI = readLine()!.split(separator: " ")
-    var inputReal: [Int] = []
-    for t in 0..<inputI.count {
-        inputReal.append(Int(inputI[t])!)
-    }
-    inputT.append(inputReal)
-}
-
-var setArray: [[Int]] = []
-
-for p in 0...(allN-pondK) {
-    for l in 0...(allN-pondK) {
-        var oneSet:[Int] = []
-
-        for i in 0..<pondK {
-            for t in 0..<pondK {
-                oneSet.append(inputT[i+p][t+l])
-            }
-        }
-        oneSet.sort { int1, int2 in
-            int1 < int2
-        }
-        setArray.append(oneSet)
-    }
-}
-
-
-setArray.sort { intArray1, intArray2 in
-    intArray1[pondK*pondK/2-1] < intArray2[pondK*pondK/2-1]
-}
-
-print(setArray[0][pondK*pondK/2-1])
+//let input = readLine()!.split(separator: " ")
+//
+//let allN = Int(input[0])!
+//let pondK = Int(input[1])!
+//
+//var inputT:[[Int]] = []
+//
+//for _ in 1...allN {
+//    let inputI = readLine()!.split(separator: " ")
+//    var inputReal: [Int] = []
+//    for t in 0..<inputI.count {
+//        inputReal.append(Int(inputI[t])!)
+//    }
+//    inputT.append(inputReal)
+//}
+//
+//var setArray: [[Int]] = []
+//
+//for p in 0...(allN-pondK) {
+//    for l in 0...(allN-pondK) {
+//        var oneSet:[Int] = []
+//
+//        for i in 0..<pondK {
+//            for t in 0..<pondK {
+//                oneSet.append(inputT[i+p][t+l])
+//            }
+//        }
+//        oneSet.sort { int1, int2 in
+//            int1 < int2
+//        }
+//        setArray.append(oneSet)
+//    }
+//}
+//
+//
+//setArray.sort { intArray1, intArray2 in
+//    intArray1[pondK*pondK/2-1] < intArray2[pondK*pondK/2-1]
+//}
+//
+//print(setArray[0][pondK*pondK/2-1])
 
 //print(setArray)
 
@@ -125,3 +125,62 @@ print(setArray[0][pondK*pondK/2-1])
 //
 //let allN = 3
 //let pondK = 2
+
+
+//let input = readLine()!.split(separator: " ")
+//
+//let fenek = Int(input[0])!
+//let araiguma = Int(input[1])!
+//
+//if fenek == araiguma {
+//    print(fenek)
+//} else {
+//    if fenek+araiguma == 1 {
+//        print(2)
+//    } else if fenek+araiguma == 2 {
+//        print(1)
+//    } else {
+//        print(0)
+//    }
+//}
+
+//let input1 = readLine()!
+//let input2 = readLine()!.split(separator: " ")
+//
+//var sum:Int = 0
+//
+//for i in 0..<input2.count {
+//    if Int(input2[i])! > 10 {
+//        sum += Int(input2[i])!-10
+//    }
+//}
+//
+//print(sum)
+
+
+
+let input1 = readLine()!
+let input2 = readLine()!.split(separator: " ")
+
+var group1: Int = 0
+var group2: Int = 0
+
+var input3:[Int] = []
+
+for i in 0..<input2.count {
+    input3.append(Int(input2[i])!)
+}
+
+input3.sort { int1, int2 in
+    int1 > int2
+}
+
+for i in 0..<input3.count {
+    if group1 <= group2 {
+        group1 += input3[i]
+    } else {
+        group2 += input3[i]
+    }
+}
+
+print(max(group1, group2))
